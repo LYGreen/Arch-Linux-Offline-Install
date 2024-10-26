@@ -4,15 +4,15 @@ ____
 
 ## 需要准备：
 
-* 可联网并使用 pacman 的 Arch Linux (可以是 Live 环境)
+* 可联网并使用 pacman 的 Arch Linux ( 可以是 Live 环境 )
 
-* 虚拟机( VMware 或 VirtualBox )
+* 虚拟机 ( VMware 或 VirtualBox )
 
 ____
 
-## 下载软件包(此处使用虚拟机的 Live 环境)：
+## 下载软件包 ( 此处使用虚拟机的 Live 环境 )：
 
-先做好硬盘相关工作( lsblk 可以检查硬盘状态)：
+先做好磁盘相关工作 ( lsblk 可以检查磁盘状态 )：
 
 ```bash
 lsblk
@@ -62,7 +62,7 @@ mkdir -p /mnt/var/lib/pacman/sync
 mkdir -p /mnt/var/cache/pacman/pkg
 ```
 
-下载存储库 (由于该目录挂载的是 sda1 分区，所以下载之后会保存在磁盘当中)
+下载存储库 ( 由于该目录挂载的是 sda1 分区，所以下载之后会保存在磁盘当中 )
 
 ```bash
 pacman --root /mnt --cachedir /mnt/var/lib/pacman/pkg -Sy
@@ -80,7 +80,7 @@ pacman --root /mnt --cachedir /mnt/var/cache/pacman/pkg -Sw base linux linux-fir
 tar -czvf packages.tar.gz var
 ```
 
-接下来可以用 pscp 等工具将该压缩包进行复制到当前计算机(此处以 pscp 为例，将文件复制到 pscp 根目录)
+接下来可以用 pscp 等工具将该压缩包进行复制到当前计算机 ( 此处以 pscp 为例，将文件复制到 pscp 根目录 )
 
 ```bash
 pscp -r root@192.168.x.x:/mnt/packages.tar.gz .
@@ -98,7 +98,7 @@ passwd
 
 ____
 
-## 安装软件包(此处新建了一个 Arch Linux 虚拟机)
+## 安装软件包 ( 此处新建了一个 Arch Linux 虚拟机 )
 
 ### 安装系统
 
@@ -108,7 +108,7 @@ ____
 fdisk /dev/sda
 ```
 
-fdisk 命令(新建分区，写入)
+fdisk 命令( 新建分区，写入 )
 
 ```
 Command (m for help):n
@@ -123,7 +123,7 @@ mount /dev/sda1 /mnt
 cd /mnt
 ```
 
-然后进行局域网传输 ( 或其他可行的方法 )，在当前计算机开启一个网页服务器 ( 可用 nginx, Visual Studio Code 的 Live Server 等 )，在 Arch Linux 里面根据 __ip__，__端口__ 和 __文件路径__ 进行输入
+然后进行局域网传输 ( 或其他可行的方法 )，在当前计算机开启一个网页服务器 ( 可用 nginx, Visual Studio Code 的 Live Server 等 )，在 Arch Linux 里面根据当前计算机的 __ip__，__端口__ 和 __文件路径__ 输入命令，把当前计算机的 packages.tar.gz 文件传输到虚拟机里
 
 ```bash
 curl -O 192.168.x.x:xx/path/to/packages.tar.gz
@@ -146,7 +146,7 @@ ls
 接下来进行安装 ( 设置 /mnt 目录为根，软件包为 /mnt/var/cache/pacman/pkg )
 
 ```bash
-pacman --root /mnt --cachedir /mnt/var/cache/pacman/pkg -S base linux linux-firmware grub vim
+pacman --root /mnt --cachedir /mnt/var/cache/pacman/pkg -S base linux linux-firmware grub vim dhcpcd
 ```
 
 之后一直默认，进行安装
@@ -173,7 +173,7 @@ mount --bind /sys /mnt/sys
 再次进行安装
 
 ```bash
-pacman --root /mnt --cachedir /mnt/var/cache/pacman/pkg -S base linux linux-firmware grub dhcpcd
+pacman --root /mnt --cachedir /mnt/var/cache/pacman/pkg -S base linux linux-firmware grub vim dhcpcd
 ```
 
 安装完成之后即可进入该系统
@@ -193,7 +193,7 @@ hwclock --systohc
 
 ### 本地化
 
-使用 vim 编辑 /etc/locale.gen，取消注释所需的语言（如 en_US.UTF-8）:
+使用 vim 编辑 /etc/locale.gen，取消注释所需的语言（ 如 en_US.UTF-8 ）:
 
 ```bash
 vim /etc/locale.gen
