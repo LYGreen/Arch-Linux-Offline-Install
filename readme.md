@@ -283,3 +283,8 @@ systemctl start dhcpcd
 ```bash
 systemctl enable dhcpcd
 ```
+
+___
+## 参考
+* [Arch 离线安装教程](https://aquarium39.moe/posts/install-arch-offline/)
+* [ChatGPT](https://chatgpt.com/)
